@@ -1,4 +1,4 @@
-require 'pry'
+# Write your code below game_hash
 
 def game_hash
   {
@@ -126,12 +126,6 @@ def game_hash
     }
   }
 end
-def players 
-  puts game_hash[:home][:players].merge(game_hash[:away][:players])
-  binding.pry
-end 
-
-
 
 def num_points_scored(player_name)
   game_hash
@@ -147,10 +141,18 @@ def num_points_scored(player_name)
 points
 end 
 
-  
-
 def shoe_size(player_name)
- 
+  game_hash
+  size = nil 
+  game_hash.each do |home_away, team_info|
+    team_info[:players].each do |player|
+      if player[:player_name] == player_name
+        size = player[:shoe]
+        break 
+      end 
+    end
+  end 
+  size 
 end 
 
 def team_colors(team_name)
